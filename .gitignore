@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Ignore game data
-lib/Assembly-CSharp.dll
+lib/*.dll
