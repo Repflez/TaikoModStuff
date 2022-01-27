@@ -13,6 +13,7 @@ namespace TaikoModStuff
         public static ConfigEntry<int> configCustomWindowedHeight;
 
         public static ConfigEntry<int> configCustomFramerate;
+        public static ConfigEntry<bool> configToggleVSync;
 
         private void Awake()
         {
@@ -36,6 +37,13 @@ namespace TaikoModStuff
                                                      "CustomFramerate",
                                                      60,
                                                      "Custom framerate. Use with caution");
+
+            configToggleVSync = Config.Bind("General.Graphics",
+                                             "EnableVSync",
+                                             true,
+                                             "Enable VSync.");
+
+
 
             var instance = new Harmony(PluginInfo.PLUGIN_NAME);
             instance.PatchAll(typeof(FontChanger));

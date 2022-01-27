@@ -5,6 +5,8 @@ namespace TaikoModStuff
 {
     internal class ForceFramerate
     {
+        private static readonly int VSyncFrames = Plugin.configToggleVSync.Value ? 1 : 0;
+
         // Skip the original method, we're doing magic here
         [HarmonyPatch(typeof(ForceRenderRate), "Start")]
         [HarmonyPrefix]
@@ -26,7 +28,7 @@ namespace TaikoModStuff
         static void customStart()
         {
             // Force vsync at all times
-            QualitySettings.vSyncCount = 1;
+            QualitySettings.vSyncCount = VSyncFrames;
             Application.targetFrameRate = Plugin.configCustomFramerate.Value;
         }
 
@@ -35,7 +37,7 @@ namespace TaikoModStuff
         static void customUpdate()
         {
             // Force vsync at all times
-            QualitySettings.vSyncCount = 1;
+            QualitySettings.vSyncCount = VSyncFrames;
             Application.targetFrameRate = Plugin.configCustomFramerate.Value;
         }
     }
