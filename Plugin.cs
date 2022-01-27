@@ -40,6 +40,7 @@ namespace TaikoModStuff
             var instance = new Harmony(PluginInfo.PLUGIN_NAME);
             instance.PatchAll(typeof(FontChanger));
             instance.PatchAll(typeof(CustomResolution));
+            instance.PatchAll(typeof(ForceFramerate));
 
             // Plugin startup logic
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
