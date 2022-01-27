@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace TaikoModStuff
 {
-    [BepInPlugin("com.github.Repflez.TaikoModStuff", PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    [BepInPlugin("TaikoModStuff", PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BaseUnityPlugin
     {
         public static ConfigEntry<bool> configForceFontChange;
