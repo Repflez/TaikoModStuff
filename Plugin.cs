@@ -5,7 +5,7 @@ using HarmonyLib;
 
 namespace TaikoModStuff
 {
-    [BepInPlugin("TaikoModStuff", PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BasePlugin
     {
         public static ConfigEntry<bool> configForceFontChange;
