@@ -16,6 +16,8 @@ namespace TaikoModStuff
         public static ConfigEntry<int> configCustomFramerate;
         public static ConfigEntry<bool> configToggleVSync;
 
+        public static ConfigEntry<bool> configEnableRecording;
+
         public override void Load()
         {
             // Add configurations
@@ -44,12 +46,17 @@ namespace TaikoModStuff
                                              true,
                                              "Enable VSync.");
 
+            configEnableRecording = Config.Bind("General.Toggles",
+                                             "EnableGameBarRecording",
+                                             true,
+                                             "Enables Game Recording from the Xbox Game Bar where it was previously disabled.");
 
 
             var instance = new Harmony(PluginInfo.PLUGIN_NAME);
             instance.PatchAll(typeof(FontChanger));
             instance.PatchAll(typeof(CustomResolution));
             instance.PatchAll(typeof(ForceFramerate));
+            instance.PatchAll(typeof(RecordingEnable));
 
             // Plugin startup logic
             Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
