@@ -1,11 +1,12 @@
 ﻿using BepInEx;
+using BepInEx.IL2CPP;
 using BepInEx.Configuration;
 using HarmonyLib;
 
 namespace TaikoModStuff
 {
     [BepInPlugin("TaikoModStuff", PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
-    public class Plugin : BaseUnityPlugin
+    public class Plugin : BasePlugin
     {
         public static ConfigEntry<bool> configForceFontChange;
 
@@ -15,7 +16,7 @@ namespace TaikoModStuff
         public static ConfigEntry<int> configCustomFramerate;
         public static ConfigEntry<bool> configToggleVSync;
 
-        private void Awake()
+        public override void Load()
         {
             // Add configurations
             configForceFontChange = Config.Bind("General.Toggles",
@@ -36,7 +37,7 @@ namespace TaikoModStuff
             configCustomFramerate = Config.Bind("General.Framerate",
                                                      "CustomFramerate",
                                                      60,
-                                                     "Custom framerate. Use with caution");
+                                                     "Custom framerate.");
 
             configToggleVSync = Config.Bind("General.Graphics",
                                              "EnableVSync",
@@ -51,7 +52,7 @@ namespace TaikoModStuff
             instance.PatchAll(typeof(ForceFramerate));
 
             // Plugin startup logic
-            Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
     }
 }
