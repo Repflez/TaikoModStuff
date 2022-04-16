@@ -18,6 +18,10 @@ namespace TaikoModStuff
 
         public static ConfigEntry<bool> configEnableRecording;
 
+        public static ConfigEntry<bool> configOfflineSaveLoad;
+        public static ConfigEntry<bool> configQuickRestart;
+        public static ConfigEntry<bool> configQuickQuitSong;
+
         public override void Load()
         {
             // Add configurations
@@ -51,12 +55,36 @@ namespace TaikoModStuff
                                              true,
                                              "Enables Game Recording from the Xbox Game Bar where it was previously disabled.");
 
+            configOfflineSaveLoad = Config.Bind("General.Toggles",
+                        "OfflineSaveLoad",
+                        false,
+                        "Loads local save files even when offline. Bypasses the log-in checks. Requires the FreeLocalSaves Plugin.\nEnabling this without FreeLocalSaves can and will wipe your save file.");
+
+            configQuickRestart = Config.Bind("General.Toggles",
+                        "QuickRestart",
+                        false,
+                        "Hit \"Backspace\" on your keyboard to quickly restart a song.");
+
+            configQuickQuitSong = Config.Bind("General.Toggles",
+                        "QuickQuitSong",
+                        false,
+                        "Hit \"Escape\" on your keyboard to quickly quit a song and return to Song Select.");
+
 
             var instance = new Harmony(PluginInfo.PLUGIN_NAME);
             instance.PatchAll(typeof(FontChanger));
             instance.PatchAll(typeof(CustomResolution));
             instance.PatchAll(typeof(ForceFramerate));
             instance.PatchAll(typeof(RecordingEnable));
+
+            if (Plugin.configOfflineSaveLoad.Value)
+                instance.PatchAll(typeof(OfflineSaveLoad));
+
+            if (Plugin.configQuickRestart.Value)
+                instance.PatchAll(typeof(QuickRestart));
+
+            if (Plugin.configQuickQuitSong.Value)
+                instance.PatchAll(typeof(QuickQuitSong));
 
             // Plugin startup logic
             Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
