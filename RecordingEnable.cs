@@ -1,5 +1,9 @@
 ﻿using HarmonyLib;
+#if !BEPIN_5
 using Il2CppMicrosoft.Xbox;
+#else
+using Microsoft.Xbox;
+#endif
 
 namespace TaikoModStuff
 {

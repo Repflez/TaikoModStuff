@@ -1,12 +1,18 @@
 ﻿using BepInEx;
+#if !BEPIN_5
 using BepInEx.IL2CPP;
+#endif
 using BepInEx.Configuration;
 using HarmonyLib;
 
 namespace TaikoModStuff
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+#if !BEPIN_5
     public class Plugin : BasePlugin
+#else
+    public class Plugin : BaseUnityPlugin
+#endif
     {
         public static ConfigEntry<bool> configForceFontChange;
 
@@ -22,7 +28,11 @@ namespace TaikoModStuff
         public static ConfigEntry<bool> configQuickRestart;
         public static ConfigEntry<bool> configQuickQuitSong;
 
+#if !BEPIN_5
         public override void Load()
+#else
+        private void Awake()
+#endif
         {
             // Add configurations
             configForceFontChange = Config.Bind("General.Toggles",
@@ -87,7 +97,11 @@ namespace TaikoModStuff
                 instance.PatchAll(typeof(QuickQuitSong));
 
             // Plugin startup logic
+#if !BEPIN_5
             Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+#else
+            Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+#endif
         }
     }
 }
