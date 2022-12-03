@@ -1,6 +1,6 @@
 ﻿using BepInEx;
 #if !BEPIN_5
-using BepInEx.IL2CPP;
+using BepInEx.Unity.IL2CPP;
 #endif
 using BepInEx.Configuration;
 using HarmonyLib;
