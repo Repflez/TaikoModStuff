@@ -26,15 +26,15 @@
   
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>lib\Assembly-CSharp.dll</HintPath>
+      <HintPath>C:\XboxGames\T Tablet\Content\BepInEx\interop\Assembly-CSharp.dll</HintPath>
 	  <Private>False</Private>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>lib\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>C:\XboxGames\T Tablet\Content\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>lib\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>C:\XboxGames\T Tablet\Content\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
 	  <Private>False</Private>
     </Reference>
   </ItemGroup>
