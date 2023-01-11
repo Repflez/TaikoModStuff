@@ -7,7 +7,7 @@ using HarmonyLib;
 
 namespace TaikoModStuff
 {
-    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
+    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 #if !BEPIN_5
     public class Plugin : BasePlugin
 #else
@@ -81,7 +81,7 @@ namespace TaikoModStuff
                         "Hit \"Escape\" on your keyboard to quickly quit a song and return to Song Select.");
 
 
-            var instance = new Harmony(PluginInfo.PLUGIN_NAME);
+            var instance = new Harmony(MyPluginInfo.PLUGIN_NAME);
             instance.PatchAll(typeof(FontChanger));
             instance.PatchAll(typeof(CustomResolution));
             instance.PatchAll(typeof(ForceFramerate));
@@ -98,9 +98,9 @@ namespace TaikoModStuff
 
             // Plugin startup logic
 #if !BEPIN_5
-            Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
 #else
-            Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
 #endif
         }
     }
